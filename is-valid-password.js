@@ -1,17 +1,30 @@
 function isValidPassword(password) {
-  if(password.length < 8) {
-    return 'Valid passwords are at least 8 characters';
-  }
-  if(!password.match(/[A-Z]/)) {
-     return 'Valid passwords contain at least one capital letter';
-  }
-  if(!password.match(/[0-9]/)) {
-     return 'Valid passwords contain at least 1 numbe';
-  }
-  return 'Password accepted!';
+  let validations = [
+    {
+      name: 'length test',
+      condition: /.{8,}/,
+      msg: 'Valid passwords are at least 8 characters'
+    },
+    {
+      name: 'Capital letter existence test',
+      condition: /[A-Z]/,
+      msg: 'Valid passwords contain at least one capital letter'
+    },
+    {
+      name: 'Numeric existence test',
+      condition: /\d/,
+      msg: 'Valid passwords contain at least 1 number'
+    }
+  ];
+  
+  let validationResult = validations.filter(
+                                        validation => !validation.condition.test(password) )
+                                    .map(validation => validation.msg);
+  
+  return validationResult.length && validationResult || 'Password accepted!';
 }
 
-console.log(isValidPassword(''));
-console.log(isValidPassword('abcljasdlfj'));
-console.log(isValidPassword('sjdklfjasF'));
-console.log(isValidPassword('sjdklfjasF9'));
+isValidPassword('');
+isValidPassword('test1234');
+isValidPassword('Testottf');
+isValidPassword('Test1234');
