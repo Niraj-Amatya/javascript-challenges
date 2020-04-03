@@ -24,9 +24,7 @@ function isPangram(string) {
   return !aToZ.length;
 }
 console.log(isPangram("the quick brown fox jumps over the lazy dog"));
-console.log(
-  true == isPangram("the five boxing kanye west wizards jump quickly")
-);
+console.log(isPangram("the five boxing kanye west wizards jump quickly"));
 console.log(isPangram("take the dog for a walk"));
 console.log(isPangram("alright alright alright"));
 console.log(isPangram("abcdefghijk1mn0pqrstuvwxyz"));
