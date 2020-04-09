@@ -8,8 +8,8 @@
 
 function commonCharacters(string1, string2) {
   // function to return an array of characters after eliminitating duplicates
-  let getDeDuplicatedCharArr = string =>
-    Array.from(new Set(string && string.toLowerCase().split("")));
+  let getDeDuplicatedCharArr = string => typeof string == 'string' &&
+    Array.from(new Set(string && string.toLowerCase().split(''))) || '';
 
   let s2 = getDeDuplicatedCharArr(string2);
   return getDeDuplicatedCharArr(string1)
@@ -19,3 +19,4 @@ function commonCharacters(string1, string2) {
 console.log(commonCharacters("efg", "elephant")); // => "efg"
 console.log(commonCharacters("We are both dragon energy", "I am God's vessel")); // => "eaodg"
 console.log(commonCharacters("Alright alright alright", "")); //=> ""
+console.log(commonCharacters("Alright alright",[])); //=> ""
